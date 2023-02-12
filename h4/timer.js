@@ -4,10 +4,17 @@ window.onload = () => {
 
 // Log timer function
 function startTimer() {
-    seconds = document.getElementById("countdownInput").value
+    seconds = parseInt(document.getElementById("countdownInput").value)
+    const alert = document.getElementById("countdownAlert")
+    alert.classList.add("d-none")
     // Handle 'seconds <= 0' or 'seconds is null'
-    if (seconds <= 0 || !seconds) {
-        throw new Error(`Timer input must be greater than 0`)
+    if (seconds <= 0 || !seconds || !Number.isInteger(seconds)) {
+        // UI alert
+        alert.classList.add("alert-danger")
+        alert.classList.remove("d-none")
+        alert.innerHTML = "<strong>Oops!</strong> Seems like your seconds input is bad. Seconds must be greater than 0."
+        // Log exception
+        throw new Error('Timer input must be greater than 0')
     }
 
     // Start countdownInterval (for UI) & countdownTimeout (for logging)
@@ -92,6 +99,7 @@ function localStorageHandler() {
         const alert = document.getElementById("countdownAlert")
         alert.innerHTML = `<strong>Timer resumed!</strong> Your last timer from 
             ${date.toLocaleString()} has not finished yet and was resumed automatically.`
+        alert.classList.add("alert-primary")
         alert.classList.remove("d-none")
         // Resume countdown
         updateCountdownText(newCountdownLength)
