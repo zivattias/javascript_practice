@@ -1,4 +1,4 @@
-// Functional programming a clearTimeout after a setTimeout has been called:x
+// Functional programming a clearTimeout after a setTimeout has been called:
 function start(event) {
     document.getElementById("finished").innerText = 'timer started'
     seconds = document.getElementById("inputSec").value
