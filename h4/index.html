@@ -33,7 +33,12 @@
                 <input id="countdownInput" type="number" class="form-control" placeholder="Seconds">
             </div>
         </div>
-        <button id="countdownExecute" onclick="startTimer(this)" class="btn btn-outline-primary">Run</button>
+        <button id="countdownExecute" onclick="startTimer(this)" class="btn btn-outline-primary mb-5">Run</button>
+        <div id="countdownAlert" class="alert alert-primary alert-dismissible fade show d-none" role="alert">
+            <button type="button" class="close" data-dismiss="countdownAlert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
     </div>
 </body>
 
