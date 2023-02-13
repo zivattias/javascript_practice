@@ -4,15 +4,15 @@ window.onload = () => {
 
 // Log timer function
 function startTimer() {
-    seconds = parseInt(document.getElementById("countdownInput").value)
+    seconds = document.getElementById("countdownInput").value
     const alert = document.getElementById("countdownAlert")
     alert.classList.add("d-none")
-    // Handle 'seconds <= 0' or 'seconds is null'
-    if (seconds <= 0 || !seconds || !Number.isInteger(seconds)) {
+    // Handle 'seconds <= 0' or 'seconds is null' or seconds include "." (isFloat)
+    if (seconds <= 0 || !seconds || seconds.includes(".")) {
         // UI alert
         alert.classList.add("alert-danger")
         alert.classList.remove("d-none")
-        alert.innerHTML = "<strong>Oops!</strong> Seems like your seconds input is bad. Seconds must be greater than 0."
+        alert.innerHTML = "<strong>Oops!</strong> Seems like your seconds input is bad. Seconds must be greater than 0 and an integer."
         // Log exception
         throw new Error('Timer input must be greater than 0')
     }
